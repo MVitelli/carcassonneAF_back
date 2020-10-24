@@ -8,7 +8,7 @@ const tileSchema = new Schema({
 
 const Tile = mongoose.model('Tile', tileSchema);
 
-exports.getAll = () => {
+const getAll = async () => {
     return Tile
         .find()
         .then((result) => {
@@ -18,7 +18,7 @@ exports.getAll = () => {
         })
 }
 
-exports.count = () => {
+const count = async () => {
     return Tile
         .countDocuments()
         .then((res) => {
@@ -26,12 +26,10 @@ exports.count = () => {
         })
 }
 
-exports.addTile = (data) => {
+const addTile = async (data) => {
     let tile = new Tile(data)
-    return tile.save()
-        .then((res) => {
-            return res
-        })
+    const res = await tile.save();
+    return res;
 }
 
 // exports.findById = (id) => {
@@ -41,3 +39,5 @@ exports.addTile = (data) => {
 //         return result;
 //     });
 // }
+
+module.exports = {getAll, count, addTile}

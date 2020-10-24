@@ -1,6 +1,6 @@
 const TileModel = require('../models/tiles');
 
-exports.getAll = (req, res) => {
+const getAll = (req, res) => {
     TileModel.getAll()
         .then((result) => {
             if (!result) return res.status(404).send({ message: 'No tiles found' });
@@ -11,17 +11,17 @@ exports.getAll = (req, res) => {
         })
 };
 
-exports.count = (req, res) => {
+const count = (req, res) => {
     TileModel.count()
         .then((result) => {
             res.status(200).send({ count: result })
         })
         .catch((err) => {
-            res.status(500).send({ message: `tuve este error ${err}` })
+            res.status(500).send({ message: `Error: ${err}` })
         })
 }
 
-exports.addTile = (req, res) => {
+const addTile = (req, res) => {
     TileModel.addTile(req.body)
         .then(() => {
             res.status(200).send("Creado exitosamente");
@@ -30,3 +30,5 @@ exports.addTile = (req, res) => {
             res.status(500).send({ message: err })
         })
 }
+
+module.exports = {addTile, count, getAll}
