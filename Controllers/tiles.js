@@ -1,3 +1,4 @@
+require('dotenv').config()
 const TileModel = require('../models/tiles');
 
 const getAll = (req, res) => {
@@ -31,4 +32,8 @@ const addTile = (req, res) => {
         })
 }
 
-module.exports = {addTile, count, getAll}
+const download = (req, res)=> {
+    res.sendFile(process.env.STORAGE_PATH + "tile_" + req.params.number + ".png")
+}
+
+module.exports = {addTile, count, getAll, download}
