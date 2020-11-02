@@ -12,6 +12,6 @@ app.use(bodyParser.json());
 // Cargamos las rutas
 app.use('/api', TilesRouter);
 //Static images of tiles
-app.use('/tiles/1stEdition/', express.static(path.join(__dirname, 'Images/1stEdition')))
+app.use('/Images/1stEdition/', express.static(path.join(__dirname, 'Images/1stEdition')))
 
 module.exports = app;

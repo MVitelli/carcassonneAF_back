@@ -40,4 +40,4 @@ const addTile = async (data) => {
 //     });
 // }
 
-module.exports = {getAll, count, addTile}
+module.exports = {Tile, getAll, count, addTile}

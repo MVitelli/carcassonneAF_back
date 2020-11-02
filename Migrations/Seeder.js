@@ -1,6 +1,7 @@
 var TileModel = require('../Models/tiles')
 var ImageSeeder = require('../Migrations/ImageSeeder.js')
 var imageEraser = require('../Migrations/Eraser')
+require('dotenv').config()
 
 
 var mongoose = require('mongoose');
@@ -28,12 +29,20 @@ TileModel.count().then(res => {
         return;
     }
     imageEraser('./Images/1stEdition');
-    let mySeeder = new ImageSeeder('./Images/tiles_first_edition.png', 82, 23, 4)
+    let mySeeder = new ImageSeeder('./Images/tiles_first_edition.png', '/Images/1stEdition/', 82, 23, 4)
     return mySeeder.load()
-}).then(() => {
-    console.log("Transaction finished")
-    mongoose.disconnect();
 })
+    .then((tilesToMigrate) => {
+        console.log("tiles: ", tilesToMigrate)
+        return TileModel.Tile.insertMany(tilesToMigrate.map((tile)=>{
+            tile.image = `${process.env.APP_URL}:${process.env.PORT}${tile.image}`
+            return tile
+        }))
+    })
+    .then(() => {
+        console.log("Seeder and Migration finished")
+        mongoose.disconnect();
+    })
 
 
 

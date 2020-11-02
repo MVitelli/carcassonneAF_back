@@ -1,4 +1,3 @@
-require('dotenv').config()
 const TileModel = require('../models/tiles');
 
 const getAll = (req, res) => {

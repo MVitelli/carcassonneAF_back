@@ -4,8 +4,8 @@
   "description": "carcassonne tiles count",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start":"node index.js .env",
+    "dev": "nodemon index.js .env",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
