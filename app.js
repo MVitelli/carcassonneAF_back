@@ -1,18 +1,17 @@
-// Utilizar funcionalidades del Ecmascript 6
 'use strict'
-// Cargamos los módulos de express y body-parser
 var express = require('express');
 var bodyParser = require('body-parser');
-// Llamamos a express para poder crear el servidor
+var path = require('path')
+
 var app = express();
-// Importamos las rutas
 var TilesRouter = require('./Routes/tiles'); 
 
-//un metodo que se ejecuta antes que llegue a un controlador
 //Configuramos bodyParser para que convierta el body de nuestras peticiones a JSON
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 // Cargamos las rutas
 app.use('/api', TilesRouter);
-// exportamos este módulo para poder usar la variable app fuera de este archivo
+//Static images of tiles
+app.use('/tiles/1stEdition/', express.static(path.join(__dirname, 'Images/1stEdition')))
+
 module.exports = app;

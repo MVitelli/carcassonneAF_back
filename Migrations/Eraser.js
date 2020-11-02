@@ -1,10 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const directory =  '../Images/1stEdition';
-
-const imageEraser = () => {
-    fs.readdir(directory, (err, files) => {
+const imageEraser = (directory) => {
+    fs.readdir(path.resolve(directory), (err, files) => {
         if (err)
             throw err;
 

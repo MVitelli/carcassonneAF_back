@@ -25,7 +25,7 @@ const count = (req, res) => {
 const addTile = (req, res) => {
     TileModel.addTile(req.body)
         .then(() => {
-            res.status(200).send("Creado exitosamente");
+            res.status(200).send("Succesful");
         })
         .catch((err) => {
             res.status(500).send({ message: err })

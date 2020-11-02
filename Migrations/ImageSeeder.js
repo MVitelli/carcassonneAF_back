@@ -40,7 +40,7 @@ class ImageSeeder {
                 console.log(`creando ${tilesCropped + 1}.png`)
                 await cloneImage
                     .crop(x, y, tileWidth, tileHeight)
-                    .writeAsync(`../Images/1stEdition/tile_${tilesCropped + 1}.png`)
+                    .writeAsync(`./Images/1stEdition/tile_${tilesCropped + 1}.png`)
                     .catch((err) => console.error(err))
                 x += tileWidth
                 tilesCropped++
