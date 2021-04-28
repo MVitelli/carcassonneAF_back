@@ -1,18 +1,23 @@
-const TileModel = require('../models/tiles');
+const Tile = require("../Models/TileModel");
+const path = require('path');
+const TileRepository = require("../Models/TileRepository");
+
+const repo =  new TileRepository(Tile);
 
 const getAll = (req, res) => {
-    TileModel.getAll()
+    repo.getAll()
         .then((result) => {
             if (!result) return res.status(404).send({ message: 'No tiles found' });
             res.status(200).send(result);
         })
         .catch((err) => {
+            console.log(`err`, err)
             res.status(500).send({ message: err })
         })
 };
 
 const count = (req, res) => {
-    TileModel.count()
+    repo.count()
         .then((result) => {
             res.status(200).send({ count: result })
         })
@@ -22,7 +27,7 @@ const count = (req, res) => {
 }
 
 const addTile = (req, res) => {
-    TileModel.addTile(req.body)
+    repo.addTile(req.body)
         .then(() => {
             res.status(200).send("Succesful");
         })
@@ -32,7 +37,7 @@ const addTile = (req, res) => {
 }
 
 const download = (req, res)=> {
-    res.sendFile(process.env.STORAGE_PATH + "tile_" + req.params.number + ".png")
+    res.sendFile(path.resolve(process.env.STORAGE_PATH + "tile_" + req.params.number + ".png"))
 }
 
 module.exports = {addTile, count, getAll, download}

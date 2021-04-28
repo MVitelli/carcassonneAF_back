@@ -1,16 +1,20 @@
 'use strict'
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path')
+const express = require('express');
+const path = require('path')
+const app = express();
+const TilesRouter = require('./Routes/tiles');
+const db = require('./db/connection') 
+require('dotenv').config()
 
-var app = express();
-var TilesRouter = require('./Routes/tiles'); 
+db.getConnection();
 
-//Configuramos bodyParser para que convierta el body de nuestras peticiones a JSON
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
-// Cargamos las rutas
+app.listen(process.env.PORT, () => {
+ console.log(`Listening on port: ${process.env.PORT}`)
+})
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
 app.use('/api', TilesRouter);
+
 //Static images of tiles
 app.use('/Images/1stEdition/', express.static(path.join(__dirname, 'Images/1stEdition')))
 
