@@ -1,4 +1,5 @@
 const Repository = require("./Repository");
+const TileModel = require("./TileModel");
 
 class TileRepository extends Repository {
     async getAll() {
@@ -27,4 +28,4 @@ class TileRepository extends Repository {
 
 }
 
-module.exports = TileRepository
+module.exports = new TileRepository(TileModel)

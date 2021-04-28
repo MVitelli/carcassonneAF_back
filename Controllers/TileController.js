@@ -1,11 +1,8 @@
-const Tile = require("../Models/TileModel");
 const path = require('path');
 const TileRepository = require("../Models/TileRepository");
 
-const repo =  new TileRepository(Tile);
-
 const getAll = (req, res) => {
-    repo.getAll()
+    TileRepository.getAll()
         .then((result) => {
             if (!result) return res.status(404).send({ message: 'No tiles found' });
             res.status(200).send(result);
@@ -17,7 +14,7 @@ const getAll = (req, res) => {
 };
 
 const count = (req, res) => {
-    repo.count()
+    TileRepository.count()
         .then((result) => {
             res.status(200).send({ count: result })
         })
@@ -27,7 +24,7 @@ const count = (req, res) => {
 }
 
 const addTile = (req, res) => {
-    repo.addTile(req.body)
+    TileRepository.addTile(req.body)
         .then(() => {
             res.status(200).send("Succesful");
         })
