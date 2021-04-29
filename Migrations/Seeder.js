@@ -35,7 +35,6 @@ TileRepository.count()
 
         mySeeder.load()
             .then(tilesToMigrate => {
-                console.log("tiles: ", tilesToMigrate)
                 return TileRepository.model.insertMany(tilesToMigrate.map((tile) => {
                     tile.image = `${process.env.APP_URL}:${process.env.PORT}${tile.image}`
                     return tile

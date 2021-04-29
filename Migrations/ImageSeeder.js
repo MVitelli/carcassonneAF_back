@@ -32,7 +32,7 @@ class ImageSeeder {
         let x = 0;
         let y = 0;
         let tilesCropped = 0;
-        let tileFS = path.resolve(this.imageOutputPath);
+        let tileFS = path.resolve("." + this.imageOutputPath);
         console.log(`tileFS`, tileFS)
 
         for (let i = 0; i < this.tilesPerColumn; i++) {
@@ -40,10 +40,11 @@ class ImageSeeder {
             for (let j = 0; j < this.tilesPerRow && tilesCropped < this.tilesNumber; j++) {
                 let cloneImage = jimpImage.clone()
                 let tileURL = `${this.imageOutputPath}tile_${tilesCropped + 1}.png`
-                console.log(`creando ${tilesCropped + 1}.png`)
+                console.log(`Creating ${tilesCropped + 1}.png`)
+                console.log("TileFS", tileFS)
                 await cloneImage
                     .crop(x, y, tileWidth, tileHeight)
-                    .writeAsync(`${tileFS}tile_${tilesCropped + 1}.png`)
+                    .writeAsync(`${tileFS}/tile_${tilesCropped + 1}.png`)
                     .catch((err) => console.error(err))
                 
                 x += tileWidth
