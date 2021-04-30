@@ -37,4 +37,4 @@ const download = (req, res) => {
     res.sendFile(path.resolve(process.env.STORAGE_PATH + "tile_" + req.params.number + ".png"))
 }
 
-module.exports = { addTile, count, getAll, download, search }
+module.exports = { addTile, count, getAll, download }
