@@ -16,6 +16,7 @@ app.use('/api', TilesRouter);
 
 //Static images of tiles
 app.use('/Images/1stEdition/', express.static(path.join(__dirname, 'Images/1stEdition')))
+app.use('/Images/2ndEdition/', express.static(path.join(__dirname, 'Images/2ndEdition')))
 
 app.listen(process.env.PORT, () => {
  console.log(`Listening on port: ${process.env.PORT}`)
