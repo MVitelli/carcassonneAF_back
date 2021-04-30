@@ -29,9 +29,10 @@ TileRepository.count()
             mongoose.disconnect();
             return;
         }
-        imageEraser('./Images/1stEdition');
+        // imageEraser('./Images/1stEdition');
 
-        const mySeeder = new ImageSeeder(process.env.IMAGE_PATH, process.env.STORAGE_PATH, 82, 23, 4)
+        // const mySeeder = new ImageSeeder(process.env.IMAGE_PATH, process.env.STORAGE_PATH, 82, 23, 4)
+        const mySeeder = new ImageSeeder(process.env.IMAGE_PATH, process.env.STORAGE_PATH, 156, 16, 10)
 
         mySeeder.load()
             .then(tilesToMigrate => {

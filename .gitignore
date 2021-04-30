@@ -109,3 +109,10 @@ Images/1stEdition/*
 
 # exception to the rule
 !Images/1stEdition/.gitkeep 
+
+# Image folder
+# exclude everything
+Images/2ndEdition/*
+
+# exception to the rule
+!Images/2ndEdition/.gitkeep 

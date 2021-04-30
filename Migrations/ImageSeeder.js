@@ -33,7 +33,6 @@ class ImageSeeder {
         let y = 0;
         let tilesCropped = 0;
         let tileFS = path.resolve("." + this.imageOutputPath);
-        console.log(`tileFS`, tileFS)
 
         for (let i = 0; i < this.tilesPerColumn; i++) {
             x = 0

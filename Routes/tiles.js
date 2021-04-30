@@ -6,5 +6,6 @@ api.get('/tiles', TilesController.getAll)
     .get('/count', TilesController.count)
     .post('/tiles', TilesController.addTile)
     .get('/tiles/:number', TilesController.download)
+    .get('/tiles/search', TilesController.search)
 
 module.exports = api;
